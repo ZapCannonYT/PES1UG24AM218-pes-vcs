@@ -50,7 +50,8 @@ int commit_parse(const void *data, size_t len, Commit *commit_out) {
     p = strchr(p, '\n') + 1;
     p = strchr(p, '\n') + 1;
 
-    snprintf(commit_out->message, sizeof(commit_out->message), "%s", p);
+   snprintf(commit_out->message, sizeof(commit_out->message), "%s", p);
+   commit_out->message[strcspn(commit_out->message, "\n")] = '\0';
     return 0;
 }
 
